@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seni Seviyor Musun?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff0f5;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 40px;
+      color: #333;
+    }
+    button {
+      font-size: 20px;
+      padding: 12px 24px;
+      margin: 10px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .evet {
+      background-color: #c0ffc0;
+    }
+    .hayir {
+      background-color: #ffb3b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="soru">Beni seviyor musun?</h1>
+  <button id="evet" class="evet" onclick="evetTikla()">Evet</button>
+  <button id="hayir" class="hayir" onclick="hayirTikla()">Hayır</button>
+
+  <script>
+    const sorular = [
+      "Beni seviyor musun",
+      "Emin misin",
+      "Bak bu son şansın",
+      "Tekrar düşünmeni istiyorum",
+      "Hata yapma sakın",
+      "Seviyorsun seviyorsun biliyorum",
+      "Hadi evete bas",
+      "Bekliyorum bak",
+      "Sevdiğini biliyorum",
+      "Naz yapma hadi",
+      "Bas şu evete",
+      "Hadi ama bekliyorum",
+      "Sonsuza kadar gider böyle",
+      "Seni bırakmayacağım haberin olsun",
+      "Seni yıldızlar kadar çok seviyorum"
+    ];
+
+    let i = 0;
+
+    function hayirTikla() {
+      // Sırayla soru değiştir
+      i = (i + 1) % sorular.length;
+      document.getElementById("soru").textContent = sorular[i];
+
+      // Buton boyutlarını değiştir
+      const evetBtn = document.getElementById("evet");
+      const hayirBtn = document.getElementById("hayir");
+
+      // Evet butonunu büyüt
+      let evetFont = parseFloat(window.getComputedStyle(evetBtn).fontSize);
+      let hayirFont = parseFloat(window.getComputedStyle(hayirBtn).fontSize);
+
+      if (evetFont < 40) { // sınır koyduk
+        evetBtn.style.fontSize = (evetFont + 2) + "px";
+        hayirBtn.style.fontSize = (hayirFont - 1) + "px";
+      }
+    }
+
+    function evetTikla() {
+      document.getElementById("soru").textContent = "Ben de seni çok seviyorum ❤️";
+    }
+  </script>
+
+</body>
+</html>
